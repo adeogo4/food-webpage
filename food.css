@@ -60,9 +60,11 @@ header nav a {
    margin-top: 80px;
    position: relative;
    display: flex;
+   flex-direction: row;
    align-items: center;
    justify-content: space-between;
    padding: 40px 5%;
+   gap: 40px;
    z-index: 1;
    min-height: 500px;
    max-width: 1400px;
@@ -72,9 +74,8 @@ header nav a {
 
 .hero-text {
    flex: 1;
-   padding-right: 5%;
    position: relative;
-   max-width: 650px;
+   max-width: 600px;
    z-index: 10;
 }
 
@@ -147,7 +148,8 @@ header nav a {
 /* hero img */
 .hero-img {
    flex: 1;
-   max-width: 600px;
+   max-width: 550px;
+   min-width: 300px;
 }
 
 .hero-img img {
@@ -155,6 +157,7 @@ header nav a {
    height: auto;
    border-radius: 20px;
    object-fit: cover;
+   display: block;
 }
 
 .line1 h4 {
@@ -403,7 +406,7 @@ h1, h2, h3, h4, h5, h6 {
    }
 }
 
-/* Tablet Landscape */
+/* Tablet Landscape - Keep side by side */
 @media screen and (max-width: 1200px) {
    .sec1, .sec2 {
       grid-template-columns: repeat(3, 1fr);
@@ -412,10 +415,11 @@ h1, h2, h3, h4, h5, h6 {
    
    .hero {
       padding: 40px 3%;
+      gap: 30px;
    }
    
    .title {
-      font-size: 50px;
+      font-size: 48px;
    }
    
    .desc {
@@ -425,9 +429,13 @@ h1, h2, h3, h4, h5, h6 {
    .card {
       max-width: 100%;
    }
+   
+   .hero-img {
+      max-width: 450px;
+   }
 }
 
-/* Tablet Portrait */
+/* Tablet Portrait - Keep side by side */
 @media screen and (max-width: 992px) {
    header {
       padding: 15px 3%;
@@ -443,34 +451,20 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .hero {
-      flex-direction: column;
-      padding: 100px 5% 40px;
-      margin-top: 0;
-      min-height: auto;
-   }
-
-   .hero-text {
-      max-width: 100%;
-      padding-right: 0;
-      margin-bottom: 30px;
-      text-align: center;
-   }
-
-   .hero-img {
-      width: 100%;
-      max-width: 500px;
+      padding: 100px 3% 40px;
+      gap: 25px;
    }
 
    .title {
-      font-size: 45px;
+      font-size: 42px;
    }
 
    .desc {
-      font-size: 1rem;
+      font-size: 0.95rem;
    }
-   
-   .buttons {
-      justify-content: center;
+
+   .hero-img {
+      max-width: 400px;
    }
 
    .sec1, .sec2 {
@@ -511,7 +505,7 @@ h1, h2, h3, h4, h5, h6 {
    }
 }
 
-/* Mobile Landscape */
+/* Mobile Landscape - Stack hero section */
 @media screen and (max-width: 768px) {
    header {
       flex-direction: column;
@@ -534,7 +528,20 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .hero {
+      flex-direction: column;
       padding: 120px 5% 30px;
+      gap: 20px;
+      min-height: auto;
+   }
+
+   .hero-text {
+      max-width: 100%;
+      text-align: center;
+   }
+
+   .hero-img {
+      width: 100%;
+      max-width: 100%;
    }
 
    .title {
@@ -548,6 +555,7 @@ h1, h2, h3, h4, h5, h6 {
    .buttons {
       flex-direction: column;
       width: 100%;
+      justify-content: center;
    }
 
    .btn-menu, .btn-drinks {
