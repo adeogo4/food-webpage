@@ -9,8 +9,10 @@
 
 body {
    background-color: #000 !important;
-   margin: 0%;
-   min-width: 100vh;
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   overflow-x: hidden;
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center;
@@ -60,13 +62,17 @@ header nav a {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 40px 20px;
+   padding: 40px 5%;
    z-index: 1;
    min-height: 500px;
+   max-width: 1400px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .hero-text {
-   padding: 3%;
+   flex: 1;
+   padding-right: 5%;
    position: relative;
    max-width: 650px;
    z-index: 10;
@@ -78,7 +84,7 @@ header nav a {
 }
 
 .title {
-   font-size: 85px;
+   font-size: 4.5vw;
    font-weight: 800;
    line-height: 1.1;
    color: #000;
@@ -94,9 +100,8 @@ header nav a {
 
 .desc {
    margin: 20px 0;
-   font-size: 200%;
-   font-weight: 150;
-   line-height: 1.5;
+   font-size: 1.2rem;
+   line-height: 1.6;
    color: #000;
    font-weight: 500;
    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -104,6 +109,9 @@ header nav a {
 
 .buttons {
    margin-top: 25px;
+   display: flex;
+   gap: 15px;
+   flex-wrap: wrap;
 }
 
 .btn-menu {
@@ -111,10 +119,14 @@ header nav a {
    text-decoration: none;
    border-radius: 12px;
    font-weight: 600;
-   margin-right: 15px;
    display: inline-block;
    background: #ffb400;
    color: white;
+   transition: background 0.3s ease;
+}
+
+.btn-menu:hover {
+   background: #e6a200;
 }
 
 .btn-drinks {
@@ -122,20 +134,27 @@ header nav a {
    text-decoration: none;
    border-radius: 12px;
    font-weight: 600;
-   margin-right: 15px;
    display: inline-block;
    background: #000;
    color: white;
+   transition: background 0.3s ease;
+}
+
+.btn-drinks:hover {
+   background: #333;
 }
 
 /* hero img */
+.hero-img {
+   flex: 1;
+   max-width: 600px;
+}
+
 .hero-img img {
-   justify-content: center;
-   width: 100vw;
-   height: auto;
-   overflow: hidden;
+   width: 100%;
    height: auto;
    border-radius: 20px;
+   object-fit: cover;
 }
 
 .line1 h4 {
@@ -357,15 +376,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1200px) {
-   .sec1, .sec2 {
-      grid-template-columns: repeat(3, 1fr);
+
+/* Large Desktop */
+@media screen and (min-width: 1400px) {
+   .title {
+      font-size: 70px;
+   }
+   
+   .desc {
+      font-size: 1.3rem;
    }
 }
 
+/* Desktop */
+@media screen and (max-width: 1400px) {
+   .hero {
+      padding: 40px 3%;
+   }
+   
+   .title {
+      font-size: 60px;
+   }
+   
+   .desc {
+      font-size: 1.1rem;
+   }
+}
+
+/* Tablet Landscape */
+@media screen and (max-width: 1200px) {
+   .sec1, .sec2 {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+   }
+   
+   .hero {
+      padding: 40px 3%;
+   }
+   
+   .title {
+      font-size: 50px;
+   }
+   
+   .desc {
+      font-size: 1rem;
+   }
+   
+   .card {
+      max-width: 100%;
+   }
+}
+
+/* Tablet Portrait */
 @media screen and (max-width: 992px) {
    header {
-      padding: 15px;
+      padding: 15px 3%;
    }
 
    header .logo {
@@ -379,33 +444,33 @@ h1, h2, h3, h4, h5, h6 {
 
    .hero {
       flex-direction: column;
-      padding: 100px 20px 40px;
+      padding: 100px 5% 40px;
       margin-top: 0;
       min-height: auto;
    }
 
    .hero-text {
-      position: relative;
       max-width: 100%;
-      padding: 0;
+      padding-right: 0;
       margin-bottom: 30px;
+      text-align: center;
    }
 
    .hero-img {
       width: 100%;
-   }
-
-   .hero-img img {
-      width: 100%;
-      height: auto;
+      max-width: 500px;
    }
 
    .title {
-      font-size: 50px;
+      font-size: 45px;
    }
 
    .desc {
-      font-size: 18px;
+      font-size: 1rem;
+   }
+   
+   .buttons {
+      justify-content: center;
    }
 
    .sec1, .sec2 {
@@ -420,7 +485,7 @@ h1, h2, h3, h4, h5, h6 {
 
    .aboutus-content {
       flex-direction: column;
-      padding: 40px 20px;
+      padding: 40px 5%;
    }
 
    .aboutus-img {
@@ -438,6 +503,7 @@ h1, h2, h3, h4, h5, h6 {
       padding: 0 5%;
       flex-wrap: wrap;
       gap: 15px;
+      justify-content: center;
    }
 
    .nav2 a {
@@ -445,11 +511,12 @@ h1, h2, h3, h4, h5, h6 {
    }
 }
 
+/* Mobile Landscape */
 @media screen and (max-width: 768px) {
    header {
       flex-direction: column;
       gap: 10px;
-      padding: 10px;
+      padding: 10px 3%;
    }
 
    header .logo {
@@ -467,27 +534,25 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .hero {
-      padding: 120px 15px 30px;
+      padding: 120px 5% 30px;
    }
 
    .title {
-      font-size: 40px;
+      font-size: 36px;
    }
 
    .desc {
-      font-size: 16px;
+      font-size: 0.95rem;
    }
 
    .buttons {
-      display: flex;
       flex-direction: column;
-      gap: 10px;
+      width: 100%;
    }
 
    .btn-menu, .btn-drinks {
       width: 100%;
       text-align: center;
-      margin-right: 0;
    }
 
    .line1 h4 {
@@ -499,16 +564,17 @@ h1, h2, h3, h4, h5, h6 {
    .sec1, .sec2 {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      padding: 3%;
+      padding: 4%;
       margin: 20px auto;
    }
 
    .card {
       height: auto;
+      max-width: 100%;
    }
 
    .card-img {
-      height: 120px;
+      height: 140px;
    }
 
    .aboutus-text {
@@ -520,12 +586,12 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .aboutus-text p {
-      font-size: 16px;
+      font-size: 15px;
    }
 
    .nav2 {
       margin: 20px auto;
-      padding: 0 3%;
+      padding: 0 4%;
    }
 
    .nav2 a {
@@ -533,6 +599,7 @@ h1, h2, h3, h4, h5, h6 {
    }
 }
 
+/* Mobile Portrait */
 @media screen and (max-width: 480px) {
    header .logo {
       font-size: 20px;
@@ -544,29 +611,33 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .hero {
-      padding: 100px 10px 20px;
+      padding: 100px 4% 20px;
    }
 
    .title {
-      font-size: 32px;
+      font-size: 28px;
    }
 
    .desc {
-      font-size: 14px;
+      font-size: 0.85rem;
    }
 
    .line1 h4 {
-      font-size: 24px;
+      font-size: 22px;
    }
 
    .sec1, .sec2 {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.8rem;
-      padding: 2%;
+      padding: 3%;
    }
 
    .card {
       height: auto;
+   }
+   
+   .card-img {
+      height: 120px;
    }
 
    .card-body h3 {
@@ -589,9 +660,10 @@ h1, h2, h3, h4, h5, h6 {
    .nav2 {
       flex-wrap: wrap;
       gap: 10px;
+      padding: 0 3%;
    }
 
    .nav2 a {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
    }
 }
