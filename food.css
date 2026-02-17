@@ -150,14 +150,38 @@ header nav a {
    flex: 1;
    max-width: 550px;
    min-width: 300px;
+   position: relative;
+   overflow: hidden;
+   border-radius: 20px;
+   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.hero-img::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(135deg, rgba(255, 180, 0, 0.1) 0%, rgba(226, 67, 67, 0.1) 100%);
+   z-index: 1;
+   pointer-events: none;
+   border-radius: 20px;
 }
 
 .hero-img img {
    width: 100%;
-   height: auto;
+   height: 100%;
+   min-height: 400px;
+   max-height: 600px;
    border-radius: 20px;
    object-fit: cover;
    display: block;
+   transition: transform 0.5s ease;
+}
+
+.hero-img:hover img {
+   transform: scale(1.05);
 }
 
 .line1 h4 {
