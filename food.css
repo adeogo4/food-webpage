@@ -18,7 +18,7 @@ body {
    background-position: center;
 }
 
-body::before{
+body::before {
    content: "";
    position: fixed;
    inset: 0;
@@ -176,8 +176,9 @@ header nav a {
    transform: translateY(-2px);
    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
-   display: block;
-   transition: transform 0.5s ease;
+
+display: block;
+transition: transform 0.5s ease;
 }
 
 .hero-img:hover img {
@@ -247,7 +248,7 @@ header nav a {
    box-sizing: border-box;
 }
 
-.card-body h3 { 
+.card-body h3 {
    color: #333;
 }
 
@@ -308,7 +309,9 @@ header nav a {
 .aboutus-text h2 {
    color: #000;
    margin-bottom: 1.5rem;
-   font-size: 36px;
+   font-size: 42px;
+   font-weight: 800;
+   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .aboutus-text p {
@@ -356,7 +359,8 @@ header nav a {
 .box2 {
    display: flex;
 }
-.nav21{
+
+.nav21 {
    padding-top: 6%;
 }
 
@@ -370,7 +374,12 @@ header nav a {
 }
 
 /* Default heading styles */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
    color: #000;
    font-weight: 600;
    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -394,6 +403,7 @@ h1, h2, h3, h4, h5, h6 {
    font-size: 28px;
    font-weight: 700;
 }
+
 .header1 nav a {
    display: inline-block;
    font-size: 18px;
@@ -409,7 +419,7 @@ h1, h2, h3, h4, h5, h6 {
    .title {
       font-size: 70px;
    }
-   
+
    .desc {
       font-size: 1.3rem;
    }
@@ -420,11 +430,11 @@ h1, h2, h3, h4, h5, h6 {
    .hero {
       padding: 40px 3%;
    }
-   
+
    .title {
       font-size: 60px;
    }
-   
+
    .desc {
       font-size: 1.1rem;
    }
@@ -432,29 +442,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Tablet Landscape */
 @media screen and (max-width: 1200px) {
-   .sec1, .sec2 {
+
+   .sec1,
+   .sec2 {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.2rem;
    }
-   
+
    .hero {
       padding: 60px 3%;
       min-height: 500px;
    }
-   
+
    .hero-text {
       padding: 35px;
       max-width: 700px;
    }
-   
+
    .title {
       font-size: 48px;
    }
-   
+
    .desc {
       font-size: 1rem;
    }
-   
+
    .card {
       max-width: 100%;
    }
@@ -493,7 +505,8 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 0.95rem;
    }
 
-   .sec1, .sec2 {
+   .sec1,
+   .sec2 {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       padding: 5%;
@@ -579,7 +592,8 @@ h1, h2, h3, h4, h5, h6 {
       justify-content: center;
    }
 
-   .btn-menu, .btn-drinks {
+   .btn-menu,
+   .btn-drinks {
       width: 100%;
       text-align: center;
    }
@@ -590,7 +604,8 @@ h1, h2, h3, h4, h5, h6 {
       margin-top: 1rem;
    }
 
-   .sec1, .sec2 {
+   .sec1,
+   .sec2 {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
       padding: 4%;
@@ -611,7 +626,8 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .aboutus-text h2 {
-      font-size: 28px;
+      font-size: 32px;
+      font-weight: 800;
    }
 
    .aboutus-text p {
@@ -660,7 +676,8 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 22px;
    }
 
-   .sec1, .sec2 {
+   .sec1,
+   .sec2 {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.8rem;
       padding: 3%;
@@ -669,7 +686,7 @@ h1, h2, h3, h4, h5, h6 {
    .card {
       height: auto;
    }
-   
+
    .card-img {
       height: 120px;
    }
@@ -684,7 +701,8 @@ h1, h2, h3, h4, h5, h6 {
    }
 
    .aboutus-text h2 {
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: 800;
    }
 
    .aboutus-text p {
