@@ -177,9 +177,9 @@ header nav a {
    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-display: block;
+/* display: block;
 transition: transform 0.5s ease;
-}
+} */
 
 .hero-img:hover img {
    transform: scale(1.05);
@@ -307,7 +307,7 @@ transition: transform 0.5s ease;
 }
 
 .aboutus-text h2 {
-   color: #ebe4e4;
+   color: #141414;
    margin-bottom: 1.5rem;
    font-size: 42px;
    font-weight: 800;
@@ -318,7 +318,7 @@ transition: transform 0.5s ease;
    font-size: 18px;
    line-height: 1.8;
    margin-bottom: 2rem;
-   color: #000;
+   color: #f7f1f1;
    font-weight: 500;
 }
 
@@ -354,6 +354,42 @@ transition: transform 0.5s ease;
 }
 
 .nav2 a:hover {
+   color: #f39d9d;
+}
+
+/* nav3 - same as nav2 */
+.nav3 {
+   color: white;
+   margin: 40px auto 20px;
+   padding: 0 3%;
+   display: flex;
+   gap: 20px;
+   align-items: center;
+   position: relative;
+   z-index: 1000;
+   max-width: 1400px;
+}
+
+.nav3 a {
+   font-size: 1.2rem;
+   display: inline-block;
+   text-decoration: none;
+   color: #faf8f8;
+   font-weight: 400;
+   transition: color 0.3s ease;
+}
+
+.nav3 a:first-child {
+   color: #fcf9f9;
+   font-weight: 600;
+}
+
+.nav3 a.active {
+   color: #fc8686;
+   font-weight: 600;
+}
+
+.nav3 a:hover {
    color: #f39d9d;
 }
 
