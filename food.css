@@ -17,9 +17,6 @@ body {
    background-repeat: no-repeat;
    background-position: center;
 }
-.logo{
-   
-}
 body::before {
    content: "";
    position: fixed;
