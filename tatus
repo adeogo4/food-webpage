@@ -1,0 +1,45 @@
+[1mdiff --git a/food.html b/food.html[m
+[1mindex 29f466d..fa57899 100644[m
+[1m--- a/food.html[m
+[1m+++ b/food.html[m
+[36m@@ -8,10 +8,11 @@[m
+   <link rel="stylesheet" href="food.css">[m
+   <link rel="stylesheet" href="./css/bootstrap.min.css">[m
+ </head>[m
+[32m+[m
+ <body>[m
+   <header>[m
+     <div class="logo">[m
+[31m-      <img src="./image/Blue and White Flat Illustrative E-commerce Platform Logo.png" alt="">[m
+[32m+[m[32m      <img src="" alt="">[m
+     </div>[m
+     <nav class="logosub">[m
+       <a href="#Home">Home</a>[m
+[36m@@ -120,7 +121,8 @@[m
+       <h2>About us</h2>[m
+       <p>[m
+         Welcome to our African culinary haven, where every dish is inspired by tradition, culture, and bold flavors.[m
+[31m-        We are passionate about bringing you the rich and diverse tastes of Africa, prepared with care, authentic recipes,[m
+[32m+[m[32m        We are passionate about bringing you the rich and diverse tastes of Africa, prepared with care, authentic[m
+[32m+[m[32m        recipes,[m
+         and the finest locally inspired ingredients.[m
+         By blending time-honored cooking methods with modern techniques, our chefs create memorable meals that celebrate[m
+         community, warmth, and the vibrant spirit of African cuisine.[m
+[36m@@ -271,14 +273,14 @@[m
+             ★★★★☆[m
+           </div>[m
+           <button class="order-btn">Order Now</button>[m
+[31m-        </div>    [m
+[31m-       </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </div>[m
+     </section>[m
+   </section>[m
+ [m
+   <section class="content">[m
+     <div>[m
+[31m-      [m
+[32m+[m
+     </div>[m
+   </section>[m
+ [m
