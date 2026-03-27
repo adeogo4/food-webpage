@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Order Now - FAV SPEEDY</title>
+  <link rel="stylesheet" href="food.css">
+  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">FAV SPEEDY</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#About us">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="order-main">
+    <div class="order-hero">
+      <h1>Place Your Order</h1>
+      <p>Fresh, hot and delivered to your door</p>
+    </div>
+
+    <div class="order-wrapper">
+
+      <!-- Menu Selection -->
+      <div class="order-menu">
+        <h2>Choose Your Meal</h2>
+        <div class="menu-grid">
+
+          <div class="menu-item" onclick="addToOrder('Amala & Ewedu', 2500)">
+            <img src="./image/Amala , gbegiri , ewedu and some proteins.jfif" alt="Amala & Ewedu">
+            <div class="menu-info">
+              <h3>Amala & Ewedu</h3>
+              <p>Served with gbegiri and assorted proteins</p>
+              <span class="price">₦2,500</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+          <div class="menu-item" onclick="addToOrder('Eba & Egusi', 2000)">
+            <img src="./image/eba and egusi image 1.jfif" alt="Eba & Egusi">
+            <div class="menu-info">
+              <h3>Eba & Egusi</h3>
+              <p>Classic eba with rich egusi soup</p>
+              <span class="price">₦2,000</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+          <div class="menu-item" onclick="addToOrder('African Chicken Stew', 3500)">
+            <img src="./image/African Chicken Stew.jfif" alt="African Chicken Stew">
+            <div class="menu-info">
+              <h3>African Chicken Stew</h3>
+              <p>Tender chicken in rich tomato stew</p>
+              <span class="price">₦3,500</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+          <div class="menu-item" onclick="addToOrder('Jollof Rice', 2500)">
+            <img src="./image/NIGERIAN JOLLOF RICE.jfif" alt="Jollof Rice">
+            <div class="menu-info">
+              <h3>Nigerian Jollof Rice</h3>
+              <p>Party-style jollof with smoky flavour</p>
+              <span class="price">₦2,500</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+          <div class="menu-item" onclick="addToOrder('Puff Puff', 500)">
+            <img src="./image/Easy Nigerian Puff Puff.jfif" alt="Puff Puff">
+            <div class="menu-info">
+              <h3>Puff Puff</h3>
+              <p>Soft, sweet deep-fried dough balls</p>
+              <span class="price">₦500</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+          <div class="menu-item" onclick="addToOrder('East African Pilau', 3000)">
+            <img src="./image/East African Pilau.jfif" alt="East African Pilau">
+            <div class="menu-info">
+              <h3>East African Pilau</h3>
+              <p>Spiced rice with tender meat</p>
+              <span class="price">₦3,000</span>
+            </div>
+            <button class="add-btn">+ Add</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Order Summary + Form -->
+      <div class="order-sidebar">
+
+        <div class="order-cart">
+          <h2>Your Order <span class="cart-count" id="cartCount">0</span></h2>
+          <div class="cart-items" id="cartItems">
+            <p class="empty-cart">No items added yet</p>
+          </div>
+          <div class="cart-total">
+            <span>Total:</span>
+            <strong id="cartTotal">₦0</strong>
+          </div>
+        </div>
+
+        <form class="order-form" onsubmit="submitOrder(event)">
+          <h2>Delivery Details</h2>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+234 000 000 0000" required>
+          </div>
+
+          <div class="form-group">
+            <label>Delivery Address</label>
+            <textarea id="address" placeholder="Enter your full delivery address" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Delivery Time</label>
+            <select id="deliveryTime" required>
+              <option value="">Select delivery time</option>
+              <option value="asap">As soon as possible</option>
+              <option value="30min">Within 30 minutes</option>
+              <option value="1hr">Within 1 hour</option>
+              <option value="scheduled">Schedule for later</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method</label>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cash" checked>
+                <span>💵 Cash on Delivery</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="transfer">
+                <span>🏦 Bank Transfer</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card">
+                <span>💳 Card Payment</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Special Instructions (optional)</label>
+            <textarea id="notes" placeholder="Any special requests or notes..." rows="2"></textarea>
+          </div>
+
+          <button type="submit" class="submit-order-btn">Place Order 🍽️</button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+      <div class="modal-icon">🎉</div>
+      <h2>Order Placed!</h2>
+      <p>Thank you! Your order has been received.</p>
+      <p>We'll call you shortly to confirm delivery.</p>
+      <p class="order-ref" id="orderRef"></p>
+      <a href="index.html" class="modal-btn">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToOrder(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty-cart">No items added yet</p>';
+        cartCount.textContent = '0';
+        cartTotal.textContent = '₦0';
+        return;
+      }
+
+      let total = 0;
+      let html = '';
+      cart.forEach((item, i) => {
+        total += item.price * item.qty;
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-info">
+              <span class="cart-item-name">${item.name}</span>
+              <span class="cart-item-price">₦${(item.price * item.qty).toLocaleString()}</span>
+            </div>
+            <div class="cart-item-controls">
+              <button onclick="changeQty(${i}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${i}, 1)">+</button>
+              <button class="remove-btn" onclick="removeItem(${i})">🗑</button>
+            </div>
+          </div>`;
+      });
+
+      cartItems.innerHTML = html;
+      cartCount.textContent = cart.reduce((a, b) => a + b.qty, 0);
+      cartTotal.textContent = '₦' + total.toLocaleString();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      renderCart();
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Please add at least one item to your order.');
+        return;
+      }
+      const ref = 'FS' + Date.now().toString().slice(-6);
+      document.getElementById('orderRef').textContent = 'Order Ref: ' + ref;
+      document.getElementById('successModal').style.display = 'flex';
+    }
+  </script>
+
+</body>
+</html>
