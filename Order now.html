@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -8,14 +9,18 @@
   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
+
 <body>
 
   <header>
     <div class="logo">FAV SPEEDY</div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="index.html#About us">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact-inline">Contact</a>
+      <a href="Order now.html" class="cart-link">
+        🛒 Cart<span class="cart-badge">0</span>
+      </a>
     </nav>
   </header>
 
@@ -180,28 +185,15 @@
     </div>
   </div>
 
+  <script src="cart.js"></script>
   <script>
-    let cart = [];
-
-    function addToOrder(name, price) {
-      const existing = cart.find(item => item.name === name);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ name, price, qty: 1 });
-      }
-      renderCart();
-    }
-
-    function removeItem(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
+    let cart = Cart.get();
 
     function renderCart() {
       const cartItems = document.getElementById('cartItems');
       const cartCount = document.getElementById('cartCount');
       const cartTotal = document.getElementById('cartTotal');
+      cart = Cart.get();
 
       if (cart.length === 0) {
         cartItems.innerHTML = '<p class="empty-cart">No items added yet</p>';
@@ -234,23 +226,43 @@
       cartTotal.textContent = '₦' + total.toLocaleString();
     }
 
+    function addToOrder(name, price) {
+      Cart.add(name, price);
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      Cart.save(cart);
+      Cart.updateBadge();
+      renderCart();
+    }
+
     function changeQty(index, delta) {
       cart[index].qty += delta;
       if (cart[index].qty <= 0) cart.splice(index, 1);
+      Cart.save(cart);
+      Cart.updateBadge();
       renderCart();
     }
 
     function submitOrder(e) {
       e.preventDefault();
-      if (cart.length === 0) {
+      if (Cart.get().length === 0) {
         alert('Please add at least one item to your order.');
         return;
       }
       const ref = 'FS' + Date.now().toString().slice(-6);
       document.getElementById('orderRef').textContent = 'Order Ref: ' + ref;
       document.getElementById('successModal').style.display = 'flex';
+      localStorage.removeItem('favspeedycart');
+      Cart.updateBadge();
     }
+
+    // Load cart on page open
+    renderCart();
   </script>
 
 </body>
+
 </html>

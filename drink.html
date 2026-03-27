@@ -1,180 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>FAV SPEEDY - Drinks</title>
   <link rel="stylesheet" href="food.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
-
 <body>
   <header>
-    <div class="logo">
-      <!-- <img src="./image/Blue and White Flat Illustrative E-commerce Platform Logo.png" alt="FAV SPEEDY Logo"> -->
-    </div>
+    <div class="logo">FAV SPEEDY</div>
     <nav>
-      <a href="food.html">Home</a>
-      <a href="#"> About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact-inline">Contact</a>
+      <a href="Order now.html" class="cart-link">
+        🛒 Cart<span class="cart-badge">0</span>
+      </a>
     </nav>
   </header>
-     <div class="nav21">
-   <nav class="nav2">
-     <a href="food.html">Menu</a>
-     <a href="dishes.html" class="active">Dishes</a>
-     <a href="bread%20%26%20starches.html">bread/starches</a>
-     <a href="salads%20%26%20vegetables.html">salads/vegetables</a>
-     <a href="drink.html">Drink</a>
-   </nav>
-  </div>
-  <!-- <nav class="nav2">
-    <a href="food.html">Menu</a>
-    <a href="dishes.html">Dishes</a>
-    <a href="bread%20%26%20starches.html">bread/starches</a>
-    <a href="salads%20%26%20vegetables.html">salads/vegetables</a>
-    <a href="drink.html" class="active">Drink</a>
-  </nav> -->
 
-  <div class="line1">
-    <h4>Refreshing Drinks</h4>
+  <div class="nav21">
+    <nav class="nav2">
+      <a href="index.html">Menu</a>
+      <a href="dishes.html">Dishes</a>
+      <a href="bread & starches.html">Bread/Starches</a>
+      <a href="salads & vegetables.html">Salads/Vegetables</a>
+      <a href="drink.html" class="active">Drink</a>
+    </nav>
   </div>
+
+  <div class="line1"><h4>Refreshing Drinks</h4></div>
 
   <section class="sec1">
     <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/20 desserts aux fraises qui vont vous donner des idées cet été _ la fraise liégeoise, un vrai délice___.jfif" alt="Traditional Drink">
-      </div>
+      <div class="card-img"><img src="./Drink image/20 desserts aux fraises qui vont vous donner des idées cet été _ la fraise liégeoise, un vrai délice___.jfif" alt="Dessert Drink"></div>
       <div class="card-body">
-        <h3>20 desserts </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>3 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/25 Caffeine-Free Loaded Tea Recipes for All-Day Enjoyment.jfif" alt="Fresh Juice">
-      </div>
-      <div class="card-body">
-        <h3>Caffeine-Free Tea </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>2 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Boba Tea Pearls Recipe_ Craft Chewy Tapioca Pearls at Home.jfif" alt="Special Drink">
-      </div>
-      <div class="card-body">
-        <h3>Tea Pearls Chewy</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>4 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Easy Wine Cocktails for Wine Wednesday When You’re Tired of Drinking It Straight.jfif" alt="Herbal Drink">
-      </div>
-      <div class="card-body">
-        <h3>Wine Cocktails  </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>5 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Strawberry Dessert</h3>
+        <div class="time"><span class="icon"></span><p>3 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Strawberry Dessert', 1200)">🛒 Add to Cart</button>
       </div>
     </div>
     <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Hawaiian Mimosa Recipe.jfif" alt="Herbal Drink">
-      </div>
+      <div class="card-img"><img src="./Drink image/25 Caffeine-Free Loaded Tea Recipes for All-Day Enjoyment.jfif" alt="Caffeine Free Tea"></div>
       <div class="card-body">
-        <h3>Hawaiian Mimosa Recipe</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>5 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Caffeine-Free Tea</h3>
+        <div class="time"><span class="icon"></span><p>2 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Caffeine-Free Tea', 800)">🛒 Add to Cart</button>
       </div>
     </div>
-     <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Pumpkin Spice Hot Chocolate_ Cozy Fall Drink Recipe.jfif" alt="Herbal Drink">
-      </div>
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Boba Tea Pearls Recipe_ Craft Chewy Tapioca Pearls at Home.jfif" alt="Boba Tea"></div>
       <div class="card-body">
-        <h3>Pumpkin Spice  Chocolate</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>5 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Boba Tea Pearls</h3>
+        <div class="time"><span class="icon"></span><p>4 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Boba Tea Pearls', 1500)">🛒 Add to Cart</button>
       </div>
     </div>
-     <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Strawberry Banana Smoothie (+ Easy Recipe).jfif" alt="Herbal Drink">
-      </div>
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Easy Wine Cocktails for Wine Wednesday When You're Tired of Drinking It Straight.jfif" alt="Wine Cocktail"></div>
       <div class="card-body">
-        <h3>Strawberry Banana</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>5 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Wine Cocktails</h3>
+        <div class="time"><span class="icon"></span><p>5 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Wine Cocktails', 2000)">🛒 Add to Cart</button>
       </div>
     </div>
-     <div class="card">
-      <div class="card-img">
-        <img src="./Drink image/Watermelon Slushie Recipe (Only 4 Ingredients!) - From My Bowl.jfif" alt="Herbal Drink">
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Hawaiian Mimosa Recipe.jfif" alt="Hawaiian Mimosa"></div>
+      <div class="card-body">
+        <h3>Hawaiian Mimosa</h3>
+        <div class="time"><span class="icon"></span><p>5 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Hawaiian Mimosa', 1800)">🛒 Add to Cart</button>
       </div>
+    </div>
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Pumpkin Spice Hot Chocolate_ Cozy Fall Drink Recipe.jfif" alt="Hot Chocolate"></div>
+      <div class="card-body">
+        <h3>Pumpkin Spice Chocolate</h3>
+        <div class="time"><span class="icon"></span><p>5 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Pumpkin Spice Chocolate', 1200)">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Strawberry Banana Smoothie (+ Easy Recipe).jfif" alt="Smoothie"></div>
+      <div class="card-body">
+        <h3>Strawberry Banana Smoothie</h3>
+        <div class="time"><span class="icon"></span><p>5 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Strawberry Banana Smoothie', 1000)">🛒 Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img"><img src="./Drink image/Watermelon Slushie Recipe (Only 4 Ingredients!) - From My Bowl.jfif" alt="Watermelon Slushie"></div>
       <div class="card-body">
         <h3>Watermelon Slushie</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>5 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <div class="time"><span class="icon"></span><p>5 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Watermelon Slushie', 900)">🛒 Add to Cart</button>
       </div>
     </div>
   </section>
 
+  <script src="cart.js"></script>
 </body>
-
 </html>

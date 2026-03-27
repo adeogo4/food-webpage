@@ -1,192 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>FAV SPEEDY - Dishes</title>
   <link rel="stylesheet" href="food.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
-
 <body>
   <header class="header1">
-    <div class="logo">
-      <!-- <img src="./image/Blue and White Flat Illustrative E-commerce Platform Logo.png" alt="FAV SPEEDY Logo"> -->
-    </div>
+    <div class="logo">FAV SPEEDY</div>
     <nav>
-      <a href="food.html">Home</a>
-      <a href="#"> About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact-inline">Contact</a>
+      <a href="Order now.html" class="cart-link">
+        🛒 Cart<span class="cart-badge">0</span>
+      </a>
     </nav>
   </header>
+
   <div class="nav21">
-   <nav class="nav2">
-     <a href="food.html">Menu</a>
-     <a href="dishes.html" class="active">Dishes</a>
-     <a href="bread%20%26%20starches.html">bread/starches</a>
-     <a href="salads%20%26%20vegetables.html">salads/vegetables</a>
-     <a href="drink.html">Drink</a>
-   </nav>
+    <nav class="nav2">
+      <a href="index.html">Menu</a>
+      <a href="dishes.html" class="active">Dishes</a>
+      <a href="bread & starches.html">Bread/Starches</a>
+      <a href="salads & vegetables.html">Salads/Vegetables</a>
+      <a href="drink.html">Drink</a>
+    </nav>
   </div>
-  <div class="line1">
-    <h4>Our Dishes</h4>
-  </div>
+
+  <div class="line1"><h4>Our Dishes</h4></div>
 
   <section class="sec1">
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/African Chicken Peanut Stew.jfif" alt="Chicken Peanut Stew">
-      </div>
+      <div class="card-img"><img src="./dishes image/African Chicken Peanut Stew.jfif" alt="Chicken Peanut Stew"></div>
       <div class="card-body">
         <h3>Chicken Peanut Stew</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>25 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
+        <div class="time"><span class="icon"></span><p>25 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Chicken Peanut Stew', 3200)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Egusi soup.jfif" alt="Egusi Soup">
-      </div>
+      <div class="card-img"><img src="./dishes image/Egusi soup.jfif" alt="Egusi Soup"></div>
       <div class="card-body">
-        <h3>Egusi soup</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>30 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Egusi Soup</h3>
+        <div class="time"><span class="icon"></span><p>30 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Egusi Soup', 2800)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Efo Riro Soup _ Nigerian Dish _ African Soup _ Meal Prep _ Spinach Soup.jfif" alt="Efo Riro">
-      </div>
+      <div class="card-img"><img src="./dishes image/Efo Riro Soup _ Nigerian Dish _ African Soup _ Meal Prep _ Spinach Soup.jfif" alt="Efo Riro"></div>
       <div class="card-body">
-        <h3>Efo Riro Soup </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>20 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Efo Riro Soup</h3>
+        <div class="time"><span class="icon"></span><p>20 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Efo Riro Soup', 2500)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Groundnut Soup (Spicy Nigerian Peanut Stew).jfif" alt="Groundnut Soup">
-      </div>
+      <div class="card-img"><img src="./dishes image/Groundnut Soup (Spicy Nigerian Peanut Stew).jfif" alt="Groundnut Soup"></div>
       <div class="card-body">
         <h3>Groundnut Soup</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>35 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
+        <div class="time"><span class="icon"></span><p>35 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Groundnut Soup', 2800)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Achu & Yellow Soup_ Le Taro et Sauce Jaune — kengskitchen.jfif" alt="Achu & Yellow Soup">
-      </div>
+      <div class="card-img"><img src="./dishes image/Achu & Yellow Soup_ Le Taro et Sauce Jaune — kengskitchen.jfif" alt="Achu Soup"></div>
       <div class="card-body">
         <h3>Achu & Yellow Soup</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>40 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <div class="time"><span class="icon"></span><p>40 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Achu & Yellow Soup', 3000)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Beans and plantains 😋.jfif" alt="Beans and Plantains">
-      </div>
+      <div class="card-img"><img src="./dishes image/Beans and plantains 😋.jfif" alt="Beans and Plantains"></div>
       <div class="card-body">
-        <h3>Beans and plantains 😋</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>25 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Beans and Plantains</h3>
+        <div class="time"><span class="icon"></span><p>25 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Beans and Plantains', 1800)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Ghanaian Groundnut Soup With Rice Balls _ TasteToronto.jfif" alt="Ghanaian Groundnut Soup">
-      </div>
+      <div class="card-img"><img src="./dishes image/Ghanaian Groundnut Soup With Rice Balls _ TasteToronto.jfif" alt="Groundnut Soup Rice"></div>
       <div class="card-body">
-        <h3>Groundnut Soup  Rice </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>45 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★★
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Groundnut Soup & Rice</h3>
+        <div class="time"><span class="icon"></span><p>45 mins</p></div>
+        <div class="rating">★★★★★</div>
+        <button class="order-btn" onclick="Cart.add('Groundnut Soup & Rice', 3200)">🛒 Add to Cart</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Peanut Soup With Tofu  – AFROVITALITYEATS.jfif" alt="Peanut Soup with Tofu">
-      </div>
+      <div class="card-img"><img src="./dishes image/Peanut Soup With Tofu  – AFROVITALITYEATS.jfif" alt="Peanut Soup"></div>
       <div class="card-body">
-        <h3>Peanut Soup </h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>30 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
+        <h3>Peanut Soup</h3>
+        <div class="time"><span class="icon"></span><p>30 mins</p></div>
+        <div class="rating">★★★★☆</div>
+        <button class="order-btn" onclick="Cart.add('Peanut Soup', 2500)">🛒 Add to Cart</button>
       </div>
     </div>
-        <!-- <div class="card">
-      <div class="card-img">
-        <img src="./dishes image/Peanut Soup With Tofu  – AFROVITALITYEATS.jfif" alt="Peanut Soup with Tofu">
-      </div>
-      <div class="card-body">
-        <h3>Peanut Soup with Tofu</h3>
-        <div class="time">
-          <span class="icon"></span>
-          <p>30 mins</p>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-        <button class="order-btn">Order Now</button>
-      </div>
-    </div> -->
   </section>
 
+  <script src="cart.js"></script>
 </body>
-
 </html>
