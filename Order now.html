@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -9,7 +8,6 @@
   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
-
 <body>
 
   <header>
@@ -26,94 +24,36 @@
 
   <main class="order-main">
     <div class="order-hero">
-      <h1>Place Your Order</h1>
-      <p>Fresh, hot and delivered to your door</p>
+      <h1>Your Order</h1>
+      <p>Review your items and complete your delivery details</p>
     </div>
 
-    <div class="order-wrapper">
+    <!-- Empty cart state -->
+    <div class="empty-order" id="emptyOrder">
+      <div class="empty-icon">🛒</div>
+      <h2>Your cart is empty</h2>
+      <p>Go back and add some delicious items to your cart!</p>
+      <a href="index.html" class="btn-menu">Browse Menu</a>
+    </div>
 
-      <!-- Menu Selection -->
+    <!-- Order content (shown only when cart has items) -->
+    <div class="order-wrapper" id="orderWrapper" style="display:none;">
+
+      <!-- Cart Summary -->
       <div class="order-menu">
-        <h2>Choose Your Meal</h2>
-        <div class="menu-grid">
-
-          <div class="menu-item" onclick="addToOrder('Amala & Ewedu', 2500)">
-            <img src="./image/Amala , gbegiri , ewedu and some proteins.jfif" alt="Amala & Ewedu">
-            <div class="menu-info">
-              <h3>Amala & Ewedu</h3>
-              <p>Served with gbegiri and assorted proteins</p>
-              <span class="price">₦2,500</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-          <div class="menu-item" onclick="addToOrder('Eba & Egusi', 2000)">
-            <img src="./image/eba and egusi image 1.jfif" alt="Eba & Egusi">
-            <div class="menu-info">
-              <h3>Eba & Egusi</h3>
-              <p>Classic eba with rich egusi soup</p>
-              <span class="price">₦2,000</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-          <div class="menu-item" onclick="addToOrder('African Chicken Stew', 3500)">
-            <img src="./image/African Chicken Stew.jfif" alt="African Chicken Stew">
-            <div class="menu-info">
-              <h3>African Chicken Stew</h3>
-              <p>Tender chicken in rich tomato stew</p>
-              <span class="price">₦3,500</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-          <div class="menu-item" onclick="addToOrder('Jollof Rice', 2500)">
-            <img src="./image/NIGERIAN JOLLOF RICE.jfif" alt="Jollof Rice">
-            <div class="menu-info">
-              <h3>Nigerian Jollof Rice</h3>
-              <p>Party-style jollof with smoky flavour</p>
-              <span class="price">₦2,500</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-          <div class="menu-item" onclick="addToOrder('Puff Puff', 500)">
-            <img src="./image/Easy Nigerian Puff Puff.jfif" alt="Puff Puff">
-            <div class="menu-info">
-              <h3>Puff Puff</h3>
-              <p>Soft, sweet deep-fried dough balls</p>
-              <span class="price">₦500</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-          <div class="menu-item" onclick="addToOrder('East African Pilau', 3000)">
-            <img src="./image/East African Pilau.jfif" alt="East African Pilau">
-            <div class="menu-info">
-              <h3>East African Pilau</h3>
-              <p>Spiced rice with tender meat</p>
-              <span class="price">₦3,000</span>
-            </div>
-            <button class="add-btn">+ Add</button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Order Summary + Form -->
-      <div class="order-sidebar">
-
+        <h2>Order Summary</h2>
         <div class="order-cart">
-          <h2>Your Order <span class="cart-count" id="cartCount">0</span></h2>
-          <div class="cart-items" id="cartItems">
-            <p class="empty-cart">No items added yet</p>
-          </div>
+          <div class="cart-items" id="cartItems"></div>
           <div class="cart-total">
             <span>Total:</span>
             <strong id="cartTotal">₦0</strong>
           </div>
+          <a href="index.html" class="add-more-link">+ Add more items</a>
         </div>
+      </div>
 
+      <!-- Delivery Form -->
+      <div class="order-sidebar">
         <form class="order-form" onsubmit="submitOrder(event)">
           <h2>Delivery Details</h2>
 
@@ -168,7 +108,6 @@
 
           <button type="submit" class="submit-order-btn">Place Order 🍽️</button>
         </form>
-
       </div>
     </div>
   </main>
@@ -187,20 +126,21 @@
 
   <script src="cart.js"></script>
   <script>
-    let cart = Cart.get();
-
     function renderCart() {
+      const cart = Cart.get();
       const cartItems = document.getElementById('cartItems');
-      const cartCount = document.getElementById('cartCount');
       const cartTotal = document.getElementById('cartTotal');
-      cart = Cart.get();
+      const emptyOrder = document.getElementById('emptyOrder');
+      const orderWrapper = document.getElementById('orderWrapper');
 
       if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="empty-cart">No items added yet</p>';
-        cartCount.textContent = '0';
-        cartTotal.textContent = '₦0';
+        emptyOrder.style.display = 'block';
+        orderWrapper.style.display = 'none';
         return;
       }
+
+      emptyOrder.style.display = 'none';
+      orderWrapper.style.display = 'flex';
 
       let total = 0;
       let html = '';
@@ -222,16 +162,11 @@
       });
 
       cartItems.innerHTML = html;
-      cartCount.textContent = cart.reduce((a, b) => a + b.qty, 0);
       cartTotal.textContent = '₦' + total.toLocaleString();
     }
 
-    function addToOrder(name, price) {
-      Cart.add(name, price);
-      renderCart();
-    }
-
     function removeItem(index) {
+      const cart = Cart.get();
       cart.splice(index, 1);
       Cart.save(cart);
       Cart.updateBadge();
@@ -239,6 +174,7 @@
     }
 
     function changeQty(index, delta) {
+      const cart = Cart.get();
       cart[index].qty += delta;
       if (cart[index].qty <= 0) cart.splice(index, 1);
       Cart.save(cart);
@@ -259,10 +195,8 @@
       Cart.updateBadge();
     }
 
-    // Load cart on page open
     renderCart();
   </script>
 
 </body>
-
 </html>

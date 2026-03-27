@@ -130,3 +130,156 @@
         padding: 60px 15px;
     }
 }
+/* Contac
+t Form Section */
+.contact-form-section {
+  background: #0a0a0a;
+  padding: 80px 20px;
+}
+
+.contact-form-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.form-left {
+  flex: 1;
+  min-width: 260px;
+}
+
+.form-left h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+  text-shadow: none;
+}
+
+.form-left p {
+  color: #aaa;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.form-features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-features li {
+  color: #ccc;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  border-left: 3px solid #ff6a00;
+}
+
+.contact-form-box {
+  flex: 1.5;
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-field label {
+  color: #bbb;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 13px 16px;
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: #ff6a00;
+}
+
+.form-field select option {
+  background: #2a2a2a;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.contact-submit-btn {
+  padding: 15px;
+  background: linear-gradient(135deg, #ff6a00, #ffb400);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.2s;
+  font-family: inherit;
+}
+
+.contact-submit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .contact-form-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .form-left {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .contact-form-box {
+    padding: 25px 18px;
+  }
+
+  .form-left h2 {
+    font-size: 1.6rem;
+  }
+}

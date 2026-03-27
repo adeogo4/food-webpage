@@ -398,7 +398,45 @@
   opacity: 0.9;
 }
 
-/* Responsive */
+/* Empty cart state */
+.empty-order {
+  text-align: center;
+  padding: 80px 20px;
+  display: none;
+}
+
+.empty-order .empty-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.empty-order h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+
+.empty-order p {
+  color: #aaa;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* Add more link */
+.add-more-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #ffb400;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.add-more-link:hover {
+  color: #ff6a00;
+}
 @media (max-width: 992px) {
   .order-wrapper {
     flex-direction: column;

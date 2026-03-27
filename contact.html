@@ -1,81 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - African Cuisine</title>
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="food.css">
-    <!-- Contact Page Specific CSS -->
-    <link rel="stylesheet" href="contact.css">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Contact Us - FAV SPEEDY</title>
+  <link rel="stylesheet" href="food.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">FAV SPEEDY</div>
-        <nav>
-            <a href="food.html">Home</a>
-            <a href="dishes.html">Dishes</a>
-            <a href="drink.html">Drinks</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <!-- Contact Hero Section -->
-    <section class="contact-hero">
-        <h1>Contact Us</h1>
-        <div class="dots">• • • • •</div>
-        <p>Need an expert? You are more than welcomed to leave your contact info and we will be in touch shortly</p>
-    </section>
+  <header>
+    <div class="logo">FAV SPEEDY</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dishes.html">Dishes</a>
+      <a href="drink.html">Drinks</a>
+      <a href="contact.html">Contact</a>
+      <a href="Order now.html" class="cart-link">
+        🛒 Cart<span class="cart-badge">0</span>
+      </a>
+    </nav>
+  </header>
 
-    <!-- Contact Information Section -->
-    <section class="contact-section">
-        <div class="contact-cards">
-            <!-- Visit Us Card -->
-            <div class="contact-card">
-                <div class="icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <h3>Visit Us</h3>
-                <p>Come visit our restaurant and enjoy authentic African cuisine in a warm and welcoming atmosphere.</p>
-                <div class="contact-info">123 African St, Lagos, NG</div>
-            </div>
+  <!-- Hero -->
+  <section class="contact-hero">
+    <h1>Contact Us</h1>
+    <div class="dots">• • • • •</div>
+    <p>Need help or want to make a special order? We'd love to hear from you.</p>
+  </section>
 
-            <!-- Call Us Card -->
-            <div class="contact-card">
-                <div class="icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <h3>Call Us</h3>
-                <p>Give us a call and we'll be happy to help you with reservations, catering, or any questions you may
-                    have.</p>
-                <div class="contact-info">+234 7044035792</div>
-            </div>
+  <!-- Info Cards -->
+  <section class="contact-section">
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon"><i class="fas fa-home"></i></div>
+        <h3>Visit Us</h3>
+        <p>Come enjoy authentic African cuisine in a warm and welcoming atmosphere.</p>
+        <div class="contact-info">123 African St, Lagos, NG</div>
+      </div>
+      <div class="contact-card">
+        <div class="icon"><i class="fas fa-phone"></i></div>
+        <h3>Call Us</h3>
+        <p>We're happy to help with reservations, catering, or any questions.</p>
+        <div class="contact-info">+234 7044035792</div>
+      </div>
+      <div class="contact-card">
+        <div class="icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email Us</h3>
+        <p>Send us an email and we'll get back to you as soon as possible.</p>
+        <div class="contact-info">favouradedeji266@gmail.com</div>
+      </div>
+    </div>
+  </section>
 
-            <!-- Contact Us Card -->
-            <div class="contact-card">
-                <div class="icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3>Contact Us</h3>
-                <p>Send us an email and we'll get back to you as soon as possible. We'd love to hear from you!</p>
-                <div class="contact-info">favouradedeji266@gmail.com</div>
-            </div>
+  <!-- Contact Form -->
+  <section class="contact-form-section">
+    <div class="contact-form-wrapper">
+      <div class="form-left">
+        <h2>Send Us a Message</h2>
+        <p>Fill out the form and we'll get back to you within 24 hours.</p>
+        <ul class="form-features">
+          <li>⚡ Fast response time</li>
+          <li>🍽️ Special order requests welcome</li>
+          <li>📦 Catering & bulk orders</li>
+          <li>💬 General enquiries</li>
+        </ul>
+      </div>
+      <form class="contact-form-box" onsubmit="sendMessage(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-field">
+            <label>Email Address *</label>
+            <input type="email" placeholder="your@email.com" required>
+          </div>
         </div>
-    </section>
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+234 000 000 0000">
+        </div>
+        <div class="form-field">
+          <label>Subject *</label>
+          <select required>
+            <option value="">Select a subject</option>
+            <option>General Enquiry</option>
+            <option>Special Order</option>
+            <option>Catering Request</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message *</label>
+          <textarea placeholder="Write your message here..." rows="5" required></textarea>
+        </div>
+        <button type="submit" class="contact-submit-btn">Send Message 📩</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- External JavaScript -->
-    <script src="contact.js"></script>
+  <footer class="site-footer">
+    <p>© 2025 FAV SPEEDY. All rights reserved.</p>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    function sendMessage(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✅ Message Sent!';
+      btn.style.background = '#28a745';
+      setTimeout(() => {
+        btn.textContent = 'Send Message 📩';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
 </body>
-
 </html>
