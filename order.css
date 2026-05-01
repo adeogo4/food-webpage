@@ -591,3 +591,48 @@
   font-family: monospace;
   margin: 10px 0;
 }
+
+/* ── Order page responsive ─────────────────────────────────── */
+@media (max-width: 767px) {
+  .order-main { padding-top: 70px; }
+
+  .order-hero { padding: 30px 16px 20px; }
+  .order-hero h1 { font-size: 1.8rem; }
+  .order-hero p { font-size: 0.9rem; }
+
+  .order-wrapper {
+    flex-direction: column;
+    padding: 0 4%;
+    margin: 20px auto;
+  }
+
+  .order-sidebar { position: static; width: 100%; }
+
+  .order-form { padding: 20px 16px; }
+  .order-form h2 { font-size: 1.1rem; }
+
+  .form-row-split { flex-direction: column; gap: 0; }
+
+  .submit-order-btn { font-size: 1rem; padding: 14px; }
+
+  .modal-box { padding: 30px 20px; }
+  .modal-box h2 { font-size: 1.5rem; }
+
+  .order-code-display {
+    font-size: 1.4rem;
+    padding: 14px 20px;
+    letter-spacing: 2px;
+  }
+
+  .back-btn { padding: 12px 16px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .order-hero h1 { font-size: 1.5rem; }
+
+  .cart-item-info { flex-direction: column; gap: 2px; }
+
+  .payment-detail-box { padding: 14px; }
+
+  .bank-dest-box { padding: 12px; }
+}

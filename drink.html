@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
   <title>FAV SPEEDY - Drinks</title>
   <link rel="stylesheet" href="food.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -10,7 +11,10 @@
 <body>
   <header>
     <div class="logo">FAV SPEEDY</div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
       <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact-inline">Contact</a>
@@ -108,5 +112,17 @@
   </section>
 
   <script src="cart.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mainNav.classList.remove('open');
+    }));
+  </script>
 </body>
 </html>

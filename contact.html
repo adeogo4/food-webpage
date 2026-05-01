@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
   <title>Contact Us - FAV SPEEDY</title>
   <link rel="stylesheet" href="food.css">
   <link rel="stylesheet" href="contact.css">
@@ -13,7 +14,10 @@
 
   <header>
     <div class="logo">FAV SPEEDY</div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
       <a href="index.html">Home</a>
       <a href="dishes.html">Dishes</a>
       <a href="drink.html">Drinks</a>
@@ -108,36 +112,84 @@
 
         <!-- Bank Transfer Details (shown conditionally) -->
         <div id="bank-details" class="payment-info-box" style="display:none;">
-          <p>Transfer to:</p>
-          <p><strong>Bank:</strong> First Bank Nigeria</p>
-          <p><strong>Account Name:</strong> FAV SPEEDY Foods</p>
-          <p><strong>Account Number:</strong> 3012345678</p>
-          <div class="form-field" style="margin-top:10px;">
+          <p style="color:#ff6a00; font-weight:600; margin-bottom:4px;">📋 Transfer to this account:</p>
+          <div class="bank-dest-box">
+            <p><span class="bank-label">Bank:</span> First Bank Nigeria</p>
+            <p><span class="bank-label">Account Name:</span> FAV SPEEDY Foods</p>
+            <p><span class="bank-label">Account Number:</span> <strong style="font-size:1.2rem; letter-spacing:2px;">3012345678</strong></p>
+          </div>
+          <div class="form-field" style="margin-top:14px;">
+            <label>Your Bank (transferring from) *</label>
+            <select id="sender-bank">
+              <option value="">Select your bank</option>
+              <option>Access Bank</option>
+              <option>First Bank Nigeria</option>
+              <option>GTBank (Guaranty Trust)</option>
+              <option>Zenith Bank</option>
+              <option>UBA (United Bank for Africa)</option>
+              <option>Fidelity Bank</option>
+              <option>Union Bank</option>
+              <option>Sterling Bank</option>
+              <option>Stanbic IBTC Bank</option>
+              <option>Polaris Bank</option>
+              <option>Wema Bank / ALAT</option>
+              <option>Kuda Bank</option>
+              <option>Opay</option>
+              <option>Palmpay</option>
+              <option>Moniepoint</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
             <label>Transaction Reference / Receipt Number *</label>
             <input type="text" id="txn-ref" placeholder="e.g. FBN2025XXXXXX">
+          </div>
+          <div class="form-field">
+            <label>Amount Transferred (₦) *</label>
+            <input type="number" id="txn-amount" placeholder="e.g. 5000" min="1">
           </div>
         </div>
 
         <!-- Card Details (shown conditionally) -->
         <div id="card-details" class="payment-info-box" style="display:none;">
+          <p style="color:#ff6a00; font-weight:600; margin-bottom:12px;">💳 Enter your card details:</p>
           <div class="form-field">
             <label>Cardholder Name *</label>
-            <input type="text" id="card-name" placeholder="Name on card">
+            <input type="text" id="card-name" placeholder="Name exactly as on card">
+          </div>
+          <div class="form-field">
+            <label>Card Type</label>
+            <div class="card-type-row">
+              <label class="card-type-option">
+                <input type="radio" name="card-type" value="visa" checked> Visa
+              </label>
+              <label class="card-type-option">
+                <input type="radio" name="card-type" value="mastercard"> Mastercard
+              </label>
+              <label class="card-type-option">
+                <input type="radio" name="card-type" value="verve"> Verve
+              </label>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Card Number *</label>
+            <input type="text" id="card-number" placeholder="•••• •••• •••• ••••" maxlength="19" inputmode="numeric">
           </div>
           <div class="form-row">
             <div class="form-field">
-              <label>Card Number *</label>
-              <input type="text" id="card-number" placeholder="•••• •••• •••• ••••" maxlength="19">
-            </div>
-            <div class="form-field">
-              <label>Expiry *</label>
-              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+              <label>Expiry Date *</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
             </div>
             <div class="form-field">
               <label>CVV *</label>
-              <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+              <input type="password" id="card-cvv" placeholder="•••" maxlength="3" inputmode="numeric">
             </div>
           </div>
+          <div class="form-field">
+            <label>Amount to Charge (₦) *</label>
+            <input type="number" id="card-amount" placeholder="e.g. 5000" min="1">
+          </div>
+          <p class="secure-note">🔒 Your card details are encrypted and secure.</p>
         </div>
 
         <div class="form-field">
@@ -183,6 +235,17 @@
 
   <script src="cart.js"></script>
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mainNav.classList.remove('open');
+    }));
+
     // Show/hide payment method fields
     document.getElementById('payment-method').addEventListener('change', function () {
       document.getElementById('bank-details').style.display = this.value === 'bank-transfer' ? 'block' : 'none';

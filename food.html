@@ -12,7 +12,10 @@
 <body>
   <header>
     <div class="logo">FAV SPEEDY</div>
-    <nav class="logosub">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="logosub" id="mainNav">
       <a href="#Home">Home</a>
       <a href="#about">About</a>
       <a href="#contact-inline">Contact</a>
@@ -285,6 +288,19 @@
     </div>
   </section>
 
-<script src="cart.js"></script></body></html>
+<script src="cart.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mainNav.classList.remove('open');
+    }));
+  </script>
+</body></html>
 
 
