@@ -300,6 +300,10 @@
         phoneErr.textContent = 'Phone number must start with 070, 080, 090, 091, or 081.';
         return;
       }
+      if (digits.length !== 11) {
+        phoneErr.textContent = 'Phone number must be exactly 11 digits.';
+        return;
+      }
 
       document.getElementById('step-delivery').style.display = 'none';
       document.getElementById('step-payment').style.display = 'block';

@@ -314,6 +314,10 @@
         showError('Phone number must start with 070, 080, 090, 091, or 081.');
         return;
       }
+      if (phoneDigits.length !== 11) {
+        showError('Phone number must be exactly 11 digits.');
+        return;
+      }
 
       // Validate method-specific fields
       if (method === 'bank-transfer') {
