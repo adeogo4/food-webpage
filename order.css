@@ -469,3 +469,125 @@
     font-size: 0.95rem;
   }
 }
+
+/* Payment detail boxes */
+.payment-detail-box {
+  background: #222;
+  border: 1px solid rgba(255, 106, 0, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 6px;
+}
+
+.bank-dest-box {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bank-dest-box p {
+  color: #ccc;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.dest-title {
+  color: #ff6a00 !important;
+  font-weight: 600;
+  margin-bottom: 6px !important;
+}
+
+.bank-label {
+  color: #ff6a00;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.acct-num {
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+/* Card type row */
+.card-type-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.card-type-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.card-type-option input {
+  accent-color: #ff6a00;
+  width: auto !important;
+}
+
+/* Secure note */
+.secure-note {
+  color: #888;
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+
+/* Split row for expiry + cvv */
+.form-row-split {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row-split .form-group {
+  flex: 1;
+}
+
+/* Field error */
+.field-error {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Back button */
+.back-btn {
+  padding: 14px 20px;
+  background: #2a2a2a;
+  color: #ccc;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.back-btn:hover {
+  background: #333;
+}
+
+/* Order code display in modal */
+.order-code-display {
+  background: linear-gradient(135deg, #ff6a00, #ffb400);
+  border-radius: 14px;
+  padding: 18px 30px;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 4px;
+  font-family: monospace;
+  margin: 10px 0;
+}

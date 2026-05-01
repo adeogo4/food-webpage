@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
+
 <body>
 
   <header>
@@ -15,7 +17,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
-      <a href="index.html#contact-inline">Contact</a>
+      <a href="contact.html">Contact</a>
       <a href="Order now.html" class="cart-link">
         🛒 Cart<span class="cart-badge">0</span>
       </a>
@@ -25,7 +27,7 @@
   <main class="order-main">
     <div class="order-hero">
       <h1>Your Order</h1>
-      <p>Review your items and complete your delivery details</p>
+      <p>Review your items and complete payment to get your order code</p>
     </div>
 
     <!-- Empty cart state -->
@@ -33,10 +35,10 @@
       <div class="empty-icon">🛒</div>
       <h2>Your cart is empty</h2>
       <p>Go back and add some delicious items to your cart!</p>
-      <a href="index.html" class="btn-menu">Browse Menu</a>
+      <a href="food.html" class="btn-menu">Browse Menu</a>
     </div>
 
-    <!-- Order content (shown only when cart has items) -->
+    <!-- Order content -->
     <div class="order-wrapper" id="orderWrapper" style="display:none;">
 
       <!-- Cart Summary -->
@@ -48,33 +50,36 @@
             <span>Total:</span>
             <strong id="cartTotal">₦0</strong>
           </div>
-          <a href="index.html" class="add-more-link">+ Add more items</a>
+          <a href="food.html" class="add-more-link">+ Add more items</a>
         </div>
       </div>
 
-      <!-- Delivery Form -->
+      <!-- Checkout Form -->
       <div class="order-sidebar">
-        <form class="order-form" onsubmit="submitOrder(event)">
-          <h2>Delivery Details</h2>
+
+        <!-- STEP 1: Delivery Details -->
+        <div id="step-delivery" class="order-form">
+          <h2>1. Delivery Details</h2>
 
           <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="fullName" placeholder="Enter your full name" required>
+            <label>Full Name *</label>
+            <input type="text" id="fullName" placeholder="Enter your full name">
           </div>
 
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="phone" placeholder="+234 000 000 0000" required>
+            <label>Phone Number *</label>
+            <input type="tel" id="phone" placeholder="070, 080, 090, 091 or 081...">
+            <span class="field-error" id="phone-error"></span>
           </div>
 
           <div class="form-group">
-            <label>Delivery Address</label>
-            <textarea id="address" placeholder="Enter your full delivery address" rows="3" required></textarea>
+            <label>Delivery Address *</label>
+            <textarea id="address" placeholder="Enter your full delivery address" rows="3"></textarea>
           </div>
 
           <div class="form-group">
-            <label>Delivery Time</label>
-            <select id="deliveryTime" required>
+            <label>Delivery Time *</label>
+            <select id="deliveryTime">
               <option value="">Select delivery time</option>
               <option value="asap">As soon as possible</option>
               <option value="30min">Within 30 minutes</option>
@@ -84,30 +89,121 @@
           </div>
 
           <div class="form-group">
-            <label>Payment Method</label>
-            <div class="payment-options">
-              <label class="payment-option">
-                <input type="radio" name="payment" value="cash" checked>
-                <span>💵 Cash on Delivery</span>
-              </label>
-              <label class="payment-option">
-                <input type="radio" name="payment" value="transfer">
-                <span>🏦 Bank Transfer</span>
-              </label>
-              <label class="payment-option">
-                <input type="radio" name="payment" value="card">
-                <span>💳 Card Payment</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label>Special Instructions (optional)</label>
             <textarea id="notes" placeholder="Any special requests or notes..." rows="2"></textarea>
           </div>
 
-          <button type="submit" class="submit-order-btn">Place Order 🍽️</button>
-        </form>
+          <div class="field-error" id="delivery-error"></div>
+          <button type="button" class="submit-order-btn" onclick="goToPayment()">
+            Continue to Payment →
+          </button>
+        </div>
+
+        <!-- STEP 2: Payment Details -->
+        <div id="step-payment" class="order-form" style="display:none;">
+          <h2>2. Payment Details</h2>
+
+          <div class="form-group">
+            <label>Payment Method *</label>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="transfer" onchange="showPaymentFields('transfer')">
+                <span>🏦 Bank Transfer</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card" onchange="showPaymentFields('card')">
+                <span>💳 Card Payment</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cash" onchange="showPaymentFields('cash')" checked>
+                <span>💵 Cash on Delivery</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Bank Transfer Fields -->
+          <div id="transfer-fields" class="payment-detail-box" style="display:none;">
+            <div class="bank-dest-box">
+              <p class="dest-title">📋 Transfer to this account:</p>
+              <p><span class="bank-label">Bank:</span> First Bank Nigeria</p>
+              <p><span class="bank-label">Account Name:</span> FAV SPEEDY Foods</p>
+              <p><span class="bank-label">Account Number:</span>
+                <strong class="acct-num">3012345678</strong>
+              </p>
+            </div>
+            <div class="form-group" style="margin-top:14px;">
+              <label>Your Bank (transferring from) *</label>
+              <select id="sender-bank">
+                <option value="">Select your bank</option>
+                <option>Access Bank</option>
+                <option>First Bank Nigeria</option>
+                <option>GTBank (Guaranty Trust)</option>
+                <option>Zenith Bank</option>
+                <option>UBA (United Bank for Africa)</option>
+                <option>Fidelity Bank</option>
+                <option>Union Bank</option>
+                <option>Sterling Bank</option>
+                <option>Stanbic IBTC Bank</option>
+                <option>Polaris Bank</option>
+                <option>Wema Bank / ALAT</option>
+                <option>Kuda Bank</option>
+                <option>Opay</option>
+                <option>Palmpay</option>
+                <option>Moniepoint</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Transaction Reference / Receipt No. *</label>
+              <input type="text" id="txn-ref" placeholder="e.g. FBN2025XXXXXX">
+            </div>
+            <div class="form-group">
+              <label>Amount Transferred (₦) *</label>
+              <input type="number" id="txn-amount" placeholder="e.g. 5000" min="1">
+            </div>
+          </div>
+
+          <!-- Card Fields -->
+          <div id="card-fields" class="payment-detail-box" style="display:none;">
+            <div class="form-group">
+              <label>Card Type</label>
+              <div class="card-type-row">
+                <label class="card-type-option"><input type="radio" name="card-type" value="visa" checked> Visa</label>
+                <label class="card-type-option"><input type="radio" name="card-type" value="mastercard"> Mastercard</label>
+                <label class="card-type-option"><input type="radio" name="card-type" value="verve"> Verve</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Cardholder Name *</label>
+              <input type="text" id="card-name" placeholder="Name exactly as on card">
+            </div>
+            <div class="form-group">
+              <label>Card Number *</label>
+              <input type="text" id="card-number" placeholder="•••• •••• •••• ••••" maxlength="19" inputmode="numeric">
+            </div>
+            <div class="form-row-split">
+              <div class="form-group">
+                <label>Expiry Date *</label>
+                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
+              </div>
+              <div class="form-group">
+                <label>CVV *</label>
+                <input type="password" id="card-cvv" placeholder="•••" maxlength="3" inputmode="numeric">
+              </div>
+            </div>
+            <p class="secure-note">🔒 Your card details are encrypted and secure.</p>
+          </div>
+
+          <div class="field-error" id="payment-error"></div>
+
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <button type="button" class="back-btn" onclick="goBack()">← Back</button>
+            <button type="button" class="submit-order-btn" onclick="confirmOrder()">
+              Confirm & Get Order Code 🔐
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -116,20 +212,23 @@
   <div class="modal-overlay" id="successModal">
     <div class="modal-box">
       <div class="modal-icon">🎉</div>
-      <h2>Order Placed!</h2>
+      <h2>Order Confirmed!</h2>
       <p>Thank you! Your order has been received.</p>
-      <p>We'll call you shortly to confirm delivery.</p>
-      <p class="order-ref" id="orderRef"></p>
-      <a href="index.html" class="modal-btn">Back to Home</a>
+      <p style="margin-bottom:6px;">Your unique order code:</p>
+      <div class="order-code-display" id="orderCodeDisplay"></div>
+      <p style="font-size:0.85rem; color:#888; margin-top:10px;">
+        Save this code to track or confirm your delivery.
+      </p>
+      <div class="order-ref" id="orderRef"></div>
+      <a href="food.html" class="modal-btn">Back to Menu 🍽️</a>
     </div>
   </div>
 
   <script src="cart.js"></script>
   <script>
+    // ── Render cart ──────────────────────────────────────────────
     function renderCart() {
       const cart = Cart.get();
-      const cartItems = document.getElementById('cartItems');
-      const cartTotal = document.getElementById('cartTotal');
       const emptyOrder = document.getElementById('emptyOrder');
       const orderWrapper = document.getElementById('orderWrapper');
 
@@ -138,12 +237,10 @@
         orderWrapper.style.display = 'none';
         return;
       }
-
       emptyOrder.style.display = 'none';
       orderWrapper.style.display = 'flex';
 
-      let total = 0;
-      let html = '';
+      let total = 0, html = '';
       cart.forEach((item, i) => {
         total += item.price * item.qty;
         html += `
@@ -160,36 +257,115 @@
             </div>
           </div>`;
       });
-
-      cartItems.innerHTML = html;
-      cartTotal.textContent = '₦' + total.toLocaleString();
+      document.getElementById('cartItems').innerHTML = html;
+      document.getElementById('cartTotal').textContent = '₦' + total.toLocaleString();
     }
 
-    function removeItem(index) {
-      const cart = Cart.get();
-      cart.splice(index, 1);
-      Cart.save(cart);
-      Cart.updateBadge();
-      renderCart();
+    function removeItem(i) {
+      const cart = Cart.get(); cart.splice(i, 1);
+      Cart.save(cart); Cart.updateBadge(); renderCart();
     }
 
-    function changeQty(index, delta) {
-      const cart = Cart.get();
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) cart.splice(index, 1);
-      Cart.save(cart);
-      Cart.updateBadge();
-      renderCart();
+    function changeQty(i, d) {
+      const cart = Cart.get(); cart[i].qty += d;
+      if (cart[i].qty <= 0) cart.splice(i, 1);
+      Cart.save(cart); Cart.updateBadge(); renderCart();
     }
 
-    function submitOrder(e) {
-      e.preventDefault();
-      if (Cart.get().length === 0) {
-        alert('Please add at least one item to your order.');
+    // ── Step navigation ──────────────────────────────────────────
+    function goToPayment() {
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const time = document.getElementById('deliveryTime').value;
+      const errEl = document.getElementById('delivery-error');
+      const phoneErr = document.getElementById('phone-error');
+
+      phoneErr.textContent = '';
+      errEl.textContent = '';
+
+      if (!name || !phone || !address || !time) {
+        errEl.textContent = 'Please fill in all required fields.';
         return;
       }
-      const ref = 'FS' + Date.now().toString().slice(-6);
-      document.getElementById('orderRef').textContent = 'Order Ref: ' + ref;
+
+      // Nigerian phone prefix validation
+      const digits = phone.replace(/\s+/g, '');
+      const validPrefixes = ['070', '080', '090', '091', '081'];
+      if (!validPrefixes.includes(digits.substring(0, 3))) {
+        phoneErr.textContent = 'Phone number must start with 070, 080, 090, 091, or 081.';
+        return;
+      }
+
+      document.getElementById('step-delivery').style.display = 'none';
+      document.getElementById('step-payment').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      document.getElementById('step-payment').style.display = 'none';
+      document.getElementById('step-delivery').style.display = 'block';
+    }
+
+    // ── Show/hide payment fields ─────────────────────────────────
+    function showPaymentFields(method) {
+      document.getElementById('transfer-fields').style.display = method === 'transfer' ? 'block' : 'none';
+      document.getElementById('card-fields').style.display = method === 'card' ? 'block' : 'none';
+    }
+
+    // ── Card number formatting ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const cn = document.getElementById('card-number');
+      cn.addEventListener('input', function () {
+        let v = this.value.replace(/\D/g, '').substring(0, 16);
+        this.value = v.replace(/(.{4})/g, '$1 ').trim();
+      });
+
+      const exp = document.getElementById('card-expiry');
+      exp.addEventListener('input', function () {
+        let v = this.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length >= 3) v = v.substring(0, 2) + '/' + v.substring(2);
+        this.value = v;
+      });
+    });
+
+    // ── Confirm order ────────────────────────────────────────────
+    function confirmOrder() {
+      const method = document.querySelector('input[name="payment"]:checked').value;
+      const errEl = document.getElementById('payment-error');
+      errEl.textContent = '';
+
+      if (method === 'transfer') {
+        const bank = document.getElementById('sender-bank').value;
+        const ref = document.getElementById('txn-ref').value.trim();
+        const amt = document.getElementById('txn-amount').value.trim();
+        if (!bank || !ref || !amt) {
+          errEl.textContent = 'Please complete all bank transfer details.';
+          return;
+        }
+      }
+
+      if (method === 'card') {
+        const cname = document.getElementById('card-name').value.trim();
+        const cn = document.getElementById('card-number').value.replace(/\s/g, '');
+        const exp = document.getElementById('card-expiry').value.trim();
+        const cvv = document.getElementById('card-cvv').value.trim();
+        if (!cname || cn.length < 16 || exp.length < 5 || cvv.length < 3) {
+          errEl.textContent = 'Please complete all card details correctly.';
+          return;
+        }
+      }
+
+      // Generate order code
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = 'FAV-';
+      for (let i = 0; i < 8; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
+
+      const methodLabels = { transfer: 'Bank Transfer', card: 'Card Payment', cash: 'Cash on Delivery' };
+      document.getElementById('orderCodeDisplay').textContent = code;
+      document.getElementById('orderRef').textContent =
+        `Payment: ${methodLabels[method]} · Name: ${document.getElementById('fullName').value.trim()}`;
+
       document.getElementById('successModal').style.display = 'flex';
       localStorage.removeItem('favspeedycart');
       Cart.updateBadge();
