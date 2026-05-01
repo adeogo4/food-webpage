@@ -28,7 +28,7 @@
   <section class="contact-hero">
     <h1>Contact Us</h1>
     <div class="dots">• • • • •</div>
-    <p>Need help or want to make a special order? We'd love to hear from you.</p>
+    <p>Complete your payment details to receive your order confirmation code.</p>
   </section>
 
   <!-- Info Cards -->
@@ -38,7 +38,7 @@
         <div class="icon"><i class="fas fa-home"></i></div>
         <h3>Visit Us</h3>
         <p>Come enjoy authentic African cuisine in a warm and welcoming atmosphere.</p>
-        <div class="contact-info">123 African St, Lagos, NG</div>
+        <div class="contact-info">Ajayi Crowther University, OYO, NG</div>
       </div>
       <div class="contact-card">
         <div class="icon"><i class="fas fa-phone"></i></div>
@@ -55,51 +55,125 @@
     </div>
   </section>
 
-  <!-- Contact Form -->
+  <!-- Payment + Confirmation Section -->
   <section class="contact-form-section">
     <div class="contact-form-wrapper">
+
       <div class="form-left">
-        <h2>Send Us a Message</h2>
-        <p>Fill out the form and we'll get back to you within 24 hours.</p>
+        <h2>Complete Your Order</h2>
+        <p>Fill in your details and payment info. Once confirmed, you'll receive a unique order code to track your delivery.</p>
         <ul class="form-features">
-          <li>⚡ Fast response time</li>
-          <li>🍽️ Special order requests welcome</li>
-          <li>📦 Catering & bulk orders</li>
-          <li>💬 General enquiries</li>
+          <li>🔒 Secure payment process</li>
+          <li>📦 Order tracking code provided</li>
+          <li>⚡ Fast confirmation</li>
+          <li>🍽️ Special requests welcome</li>
         </ul>
       </div>
-      <form class="contact-form-box" onsubmit="sendMessage(event)">
+
+      <!-- Step 1: Payment Form -->
+      <div id="payment-step" class="contact-form-box">
+        <h3 style="color:#ff6a00; margin-bottom:8px;">Payment Details</h3>
+        <p style="color:#aaa; font-size:0.9rem; margin-bottom:10px;">Enter your details below to complete your order.</p>
+
         <div class="form-row">
           <div class="form-field">
             <label>Full Name *</label>
-            <input type="text" placeholder="Your full name" required>
+            <input type="text" id="cust-name" placeholder="Your full name" required>
           </div>
           <div class="form-field">
-            <label>Email Address *</label>
-            <input type="email" placeholder="your@email.com" required>
+            <label>Phone Number *</label>
+            <input type="tel" id="cust-phone" placeholder="+234 000 000 0000" required>
           </div>
         </div>
+
         <div class="form-field">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+234 000 000 0000">
+          <label>Email Address *</label>
+          <input type="email" id="cust-email" placeholder="your@email.com" required>
         </div>
+
         <div class="form-field">
-          <label>Subject *</label>
-          <select required>
-            <option value="">Select a subject</option>
-            <option>General Enquiry</option>
-            <option>Special Order</option>
-            <option>Catering Request</option>
-            <option>Feedback</option>
-            <option>Other</option>
+          <label>Delivery Address *</label>
+          <input type="text" id="cust-address" placeholder="Enter your delivery address" required>
+        </div>
+
+        <div class="form-field">
+          <label>Payment Method *</label>
+          <select id="payment-method" required>
+            <option value="">Select payment method</option>
+            <option value="bank-transfer">Bank Transfer</option>
+            <option value="card">Debit / Credit Card</option>
+            <option value="cash">Cash on Delivery</option>
           </select>
         </div>
-        <div class="form-field">
-          <label>Message *</label>
-          <textarea placeholder="Write your message here..." rows="5" required></textarea>
+
+        <!-- Bank Transfer Details (shown conditionally) -->
+        <div id="bank-details" class="payment-info-box" style="display:none;">
+          <p>Transfer to:</p>
+          <p><strong>Bank:</strong> First Bank Nigeria</p>
+          <p><strong>Account Name:</strong> FAV SPEEDY Foods</p>
+          <p><strong>Account Number:</strong> 3012345678</p>
+          <div class="form-field" style="margin-top:10px;">
+            <label>Transaction Reference / Receipt Number *</label>
+            <input type="text" id="txn-ref" placeholder="e.g. FBN2025XXXXXX">
+          </div>
         </div>
-        <button type="submit" class="contact-submit-btn">Send Message 📩</button>
-      </form>
+
+        <!-- Card Details (shown conditionally) -->
+        <div id="card-details" class="payment-info-box" style="display:none;">
+          <div class="form-field">
+            <label>Cardholder Name *</label>
+            <input type="text" id="card-name" placeholder="Name on card">
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Card Number *</label>
+              <input type="text" id="card-number" placeholder="•••• •••• •••• ••••" maxlength="19">
+            </div>
+            <div class="form-field">
+              <label>Expiry *</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-field">
+              <label>CVV *</label>
+              <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Special Instructions (optional)</label>
+          <textarea id="cust-note" placeholder="Any special requests or notes..." rows="3"></textarea>
+        </div>
+
+        <div id="form-error" style="color:#ff4444; font-size:0.88rem; display:none;"></div>
+
+        <button type="button" class="contact-submit-btn" onclick="processPayment()">
+          Confirm & Get Order Code 🔐
+        </button>
+      </div>
+
+      <!-- Step 2: Confirmation Code -->
+      <div id="confirmation-step" class="contact-form-box" style="display:none; text-align:center;">
+        <div style="font-size:4rem; margin-bottom:16px;">✅</div>
+        <h3 style="color:#ff6a00; font-size:1.6rem; margin-bottom:10px;">Payment Received!</h3>
+        <p style="color:#aaa; margin-bottom:24px;">Thank you for your order. Here is your unique order code:</p>
+
+        <div class="order-code-box">
+          <span id="order-code"></span>
+        </div>
+
+        <p style="color:#aaa; font-size:0.9rem; margin-top:20px;">
+          Save this code — you'll need it to track or confirm your delivery.<br>
+          A confirmation will also be sent to <strong id="confirm-email" style="color:#ff6a00;"></strong>
+        </p>
+
+        <div class="confirm-details" id="confirm-summary"></div>
+
+        <a href="food.html" class="contact-submit-btn" style="display:inline-block; margin-top:24px; text-decoration:none;">
+          Back to Menu 🍽️
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -109,16 +183,99 @@
 
   <script src="cart.js"></script>
   <script>
-    function sendMessage(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = '✅ Message Sent!';
-      btn.style.background = '#28a745';
-      setTimeout(() => {
-        btn.textContent = 'Send Message 📩';
-        btn.style.background = '';
-        e.target.reset();
-      }, 3000);
+    // Show/hide payment method fields
+    document.getElementById('payment-method').addEventListener('change', function () {
+      document.getElementById('bank-details').style.display = this.value === 'bank-transfer' ? 'block' : 'none';
+      document.getElementById('card-details').style.display = this.value === 'card' ? 'block' : 'none';
+    });
+
+    // Format card number with spaces
+    const cardInput = document.getElementById('card-number');
+    if (cardInput) {
+      cardInput.addEventListener('input', function () {
+        let val = this.value.replace(/\D/g, '').substring(0, 16);
+        this.value = val.replace(/(.{4})/g, '$1 ').trim();
+      });
+    }
+
+    // Format expiry MM/YY
+    const expiryInput = document.getElementById('card-expiry');
+    if (expiryInput) {
+      expiryInput.addEventListener('input', function () {
+        let val = this.value.replace(/\D/g, '').substring(0, 4);
+        if (val.length >= 3) val = val.substring(0, 2) + '/' + val.substring(2);
+        this.value = val;
+      });
+    }
+
+    function generateOrderCode() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = 'FAV-';
+      for (let i = 0; i < 8; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return code;
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('form-error');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    function processPayment() {
+      document.getElementById('form-error').style.display = 'none';
+
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const email = document.getElementById('cust-email').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      const method = document.getElementById('payment-method').value;
+
+      if (!name || !phone || !email || !address || !method) {
+        showError('Please fill in all required fields.');
+        return;
+      }
+
+      // Validate email format
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      // Validate method-specific fields
+      if (method === 'bank-transfer') {
+        const ref = document.getElementById('txn-ref').value.trim();
+        if (!ref) { showError('Please enter your transaction reference number.'); return; }
+      }
+
+      if (method === 'card') {
+        const cn = document.getElementById('card-number').value.replace(/\s/g, '');
+        const exp = document.getElementById('card-expiry').value.trim();
+        const cvv = document.getElementById('card-cvv').value.trim();
+        const cname = document.getElementById('card-name').value.trim();
+        if (!cname || cn.length < 16 || exp.length < 5 || cvv.length < 3) {
+          showError('Please complete all card details correctly.');
+          return;
+        }
+      }
+
+      // Generate order code and show confirmation
+      const code = generateOrderCode();
+      document.getElementById('order-code').textContent = code;
+      document.getElementById('confirm-email').textContent = email;
+
+      const methodLabels = { 'bank-transfer': 'Bank Transfer', 'card': 'Card Payment', 'cash': 'Cash on Delivery' };
+      document.getElementById('confirm-summary').innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Payment:</strong> ${methodLabels[method]}</p>
+      `;
+
+      document.getElementById('payment-step').style.display = 'none';
+      document.getElementById('confirmation-step').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('confirmation-step').offsetTop - 100, behavior: 'smooth' });
     }
   </script>
 </body>

@@ -283,3 +283,70 @@ t Form Section */
     font-size: 1.6rem;
   }
 }
+
+/* Payment info boxes */
+.payment-info-box {
+  background: #222;
+  border: 1px solid rgba(255, 106, 0, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-info-box p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.payment-info-box strong {
+  color: #ff6a00;
+}
+
+/* Order confirmation code */
+.order-code-box {
+  background: linear-gradient(135deg, #ff6a00, #ffb400);
+  border-radius: 16px;
+  padding: 24px 40px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.order-code-box span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 4px;
+  font-family: monospace;
+}
+
+/* Confirmation summary */
+.confirm-details {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.confirm-details p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 6px 0;
+}
+
+.confirm-details strong {
+  color: #ff6a00;
+}
+
+/* Site footer */
+.site-footer {
+  background: #0a0a0a;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
