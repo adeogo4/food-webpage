@@ -243,6 +243,15 @@
         return;
       }
 
+      // Validate Nigerian phone number prefix
+      const validPrefixes = ['070', '080', '090', '091', '081'];
+      const phoneDigits = phone.replace(/\s+/g, '');
+      const phonePrefix = phoneDigits.substring(0, 3);
+      if (!validPrefixes.includes(phonePrefix)) {
+        showError('Phone number must start with 070, 080, 090, 091, or 081.');
+        return;
+      }
+
       // Validate method-specific fields
       if (method === 'bank-transfer') {
         const ref = document.getElementById('txn-ref').value.trim();
